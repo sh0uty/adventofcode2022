@@ -1,4 +1,4 @@
-with open('./data1.txt') as file:
+with open('./input.txt') as file:
     data = [x.strip() for x in file.readlines()]
 
 calories = 0
