@@ -42,3 +42,25 @@ for index, entry in enumerate(data):
         total += index + 1
 
 print(f'Part 1: {total}')
+
+
+with open('day13/input.txt', 'r') as file:
+    data = [eval(line.strip()) for line in file.readlines() if line.strip()]
+
+data += [[2]], [[6]]
+ordered = [data.pop(0)]
+
+for entry in data:
+    index = 0
+    while compare(entry, ordered[index]) == 1:
+        index += 1
+        if index == len(ordered):
+            break
+    if index == len(ordered):
+        ordered.append(entry)
+    else:
+        ordered.insert(index, entry)
+
+sol = (ordered.index([[2]]) + 1) * (ordered.index([[6]]) + 1)
+
+print(f'Part 2: {sol}')
